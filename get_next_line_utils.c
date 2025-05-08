@@ -6,7 +6,7 @@
 /*   By: miduarte <miduarte@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:57:30 by miduarte          #+#    #+#             */
-/*   Updated: 2025/05/08 15:35:29 by miduarte         ###   ########.fr       */
+/*   Updated: 2025/05/08 16:02:07 by miduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,23 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 }
 int ft_reset(char *bag)
 {
-	char *nl;
-	
-	nl = strchr(bag, '\n');
-	if (!nl) {
+	int i = 0;
+
+	while (bag[i] && bag[i] != '\n')
+		i++;
+	if (bag[i] != '\n')
+	{
 		bag[0] = '\0';
 		return 0;
 	}
-	size_t remaining_len = strlen(nl + 1);
-	ft_memmove(bag, nl + 1, remaining_len + 1);
-	return (1);
+	int remaining_len = 0;
+	while (bag[i + 1 + remaining_len])
+		remaining_len++;
+	int j = 0;
+	while (j <= remaining_len)
+	{
+		bag[j] = bag[i + 1 + j];
+		j++;
+	}
+	return 1;
 }
