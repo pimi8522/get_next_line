@@ -6,7 +6,7 @@
 /*   By: miduarte <miduarte@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 12:57:30 by miduarte          #+#    #+#             */
-/*   Updated: 2025/05/08 16:25:07 by miduarte         ###   ########.fr       */
+/*   Updated: 2025/05/09 10:39:15 by miduarte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,23 +81,19 @@ int ft_reset(char *bag)
 {
 	int i = 0;
 
-	// Find the first newline in the buffer
 	while (bag[i] && bag[i] != '\n')
 		i++;
-	// If no newline is found, clear the buffer and return 0
 	if (bag[i] != '\n')
 	{
 		bag[0] = '\0';
 		return 0;
 	}
-	// Shift the remaining characters after the newline
 	int j = 0;
 	while (bag[i + 1 + j])
 	{
 		bag[j] = bag[i + 1 + j];
 		j++;
 	}
-	// Null-terminate the buffer
 	bag[j] = '\0';
 	return 1;
 }
